@@ -1,0 +1,56 @@
+# ===== 가상환경 / 캐시 =====
+.venv/
+.venv-tts/
+__pycache__/
+.DS_Store
+
+# ===== 용량 큰 산출물 전부 (받은 데이터셋, 이미지, 모델, 로그) =====
+# 포켓몬 이미지는 권리자 소유라 저장소에 올리지 않는다.
+workspace/
+
+# ===== 인증 정보 (Kaggle / Hugging Face 토큰) =====
+kaggle.json
+.env
+*.token
+
+# ===== 도감 설명(게임 원문)이 들어간 DB 는 기본 제외 =====
+data/pokedex-ko.json
+data/flavor-ko-translated.json
+data/flavor-ko-translated-sv-forms.json
+data/tts_text.json
+
+# ===== 변환 산출물 =====
+*.pt
+*.onnx
+*.kmodel
+tmp/
+
+# ===== TTS: 레퍼런스(클로닝 대상 목소리), 생성 음성, 모델, 로그는 공개/배포하지 않는다 =====
+tts/ref/
+tts/raw*/
+tts/models/
+tts/*.log
+tts/check_*.json
+tts/regen_ids.json
+*.wav
+
+# ===== Flutter 앱 (app/) =====
+# 에셋은 scripts/deploy/build-app-assets.py 가 만든다: 모델, 도감 DB(도감 설명 원문 포함), 포켓몬 썸네일, 음성 → 전부 제외.
+# 빈 폴더 자리(.gitkeep)만 추적한다 (pubspec.yaml 이 폴더를 가리켜서 없으면 빌드가 실패한다).
+app/assets/**
+!app/assets/*/
+!app/assets/*/.gitkeep
+app/build/
+app/.dart_tool/
+app/.flutter-plugins-dependencies
+app/ios/Pods/
+app/ios/Flutter/ephemeral/
+app/android/.gradle/
+app/android/.kotlin/
+app/android/local.properties
+# 앱 아이콘은 레드·그린 도감 공식 아트로 만든다 (build-app-assets.py) → 포켓몬 그림이라 제외
+app/ios/Runner/Assets.xcassets/AppIcon.appiconset/icon.png
+app/android/app/src/main/res/mipmap-*/ic_launcher.png
+# 앱 아이콘: 포켓몬 공식 그림(세레비넷 SV 스마트폰 로토무)으로 만든다 → git 제외. build-app-assets.py 가 workspace/app_icon/ 원본에서 다시 만든다
+app/ios/Runner/Assets.xcassets/AppIcon.appiconset/icon.png
+app/android/app/src/main/res/mipmap-*/ic_launcher.png

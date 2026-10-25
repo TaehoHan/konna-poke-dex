@@ -1,0 +1,215 @@
+# 수집 출처 목록 (설계 초안, 2026-10-24). 아직 아무것도 받지 않았다.
+#
+# scripts/collect/fetch-sources.py 가 이 파일만 읽어 workspace/raw/<id>/ 에 받는다 (예정).
+# 출처를 추가·제외할 때 스크립트를 고치지 말고 이 파일만 바꾼다.
+#
+# 필드
+#   id          workspace/raw/<id>/, data/label-map/<id>.csv, 파일명 접두에 쓰는 이름 (소문자, 하이픈)
+#   kind        kaggle | huggingface | pokeapi | crawl (웹 페이지 수집, 수집기 별도)
+#   ref         kaggle: <owner>/<dataset>, huggingface: <owner>/<dataset>
+#   enabled     false 면 받지 않는다. 받기 전에 사용자 허락이 필요하다 (CLAUDE.md)
+#   phase       1 = 첫 학습(전국도감 1025종)에 쓴다. 2 = 나중에 검토
+#   skip        쓰지 않는 이유 (있으면 fetch-sources 가 받지 않는다). 1세대 전용 출처는 쓰지 않는다 (2026-10-24 결정)
+#   use         train | eval | meta | none_pool   (none_pool = 포켓몬이 아닌 이미지로 none 클래스용)
+#   image_type  art | sprite | render | anime | card | photo | fanart | mixed (2.3절)
+#   license     페이지에 표기된 값. 원 이미지 저작권은 별도로 포켓몬 권리자에게 있다
+#   size        페이지 표기 기준 대략값. 받기 전 실제 용량을 확인해 사용자에게 알린다
+#   verified    메타데이터를 직접 확인했는지 (hf API = hf-api, kaggle API = kaggle-api, 페이지 = page, 검색 결과만 = listing)
+#
+# 로그인: 사용자 지시(2026-10-24)로 로그인이 필요한 출처는 쓰지 않는다. 위 HF·Kaggle 은 모두 익명 다운로드가 된다
+#         (HF 게이트 없음, Kaggle 은 /api/v1/datasets/download/<ref> 가 토큰 없이 302). 토큰을 설정하지 않아도 된다.
+#   notes       라벨 형식, 주의점
+
+sources:
+  # ---------- 도감 정보·공식 아트 (클래스 기준) ----------
+  - id: pokeapi
+    kind: pokeapi
+    ref: https://pokeapi.co/api/v2/
+    enabled: true   # 2026-10-24 사용자 허락 (1025종, 약 2,600건)
+    phase: 1
+    use: meta
+    image_type: art
+    license: "PokeAPI 데이터 BSD-3 / 이미지는 권리자 소유"
+    size: "API JSON 1025종 수 MB, official-artwork PNG 약 1025장"
+    verified: api   # pokemon-species/25 에서 한국어 이름 '피카츄', 한국어 도감 설명 12개 확인
+    notes: >
+      pokemon-species 에서 names(ko), genera(ko), flavor_text_entries(ko), evolution_chain,
+      pokemon 에서 types, height, weight, sprites.other.official-artwork 를 받는다.
+      요청 간격을 두고 결과를 workspace/raw/pokeapi/ 에 캐시한다 (재요청 금지).
+
+  # ---------- Hugging Face ----------
+  - id: hf-keremberke-cls
+    kind: huggingface
+    ref: keremberke/pokemon-classification
+    enabled: false
+    skip: "1세대 전용 (150종)"   # 2026-10-24 사용자 지시: 전국도감 1025종 대상, 1세대 전용 제외
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "페이지 표기 없음 (태그 없음)"
+    size: "66MB, 파일 11개"
+    verified: hf-api   # 2026-10-24 메타데이터 확인, 로그인 없이 다운로드 가능 (받지는 않음)
+    notes: "1세대 150종 분류. fcakyon/pokemon-classification 과 내용이 겹칠 가능성 → pHash 로 중복 제거"
+
+  - id: hf-fcakyon-cls
+    kind: huggingface
+    ref: fcakyon/pokemon-classification
+    enabled: false
+    skip: "1세대 전용 (keremberke 와 같은 데이터)"   # 2026-10-24 사용자 지시: 전국도감 1025종 대상, 1세대 전용 제외
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "페이지 표기 없음 (태그 없음)"
+    size: "66MB, 파일 11개"
+    verified: hf-api   # 2026-10-24 메타데이터 확인, 로그인 없이 다운로드 가능 (받지는 않음)
+    notes: "keremberke 와 중복 가능. 둘 중 하나만 받을 수도 있다"
+
+  - id: hf-jjmack-gen1-9
+    kind: huggingface
+    ref: JJMack/pokemon-classification-gen1-9
+    enabled: true   # 2026-10-24 사용자 허락 (로컬에 받은 뒤 드라이브로 이동)
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "CC BY-NC-SA 4.0"
+    size: "599MB, 파일 5개"
+    verified: fetched   # 2026-10-24 받음 (드라이브 raw/hf-jjmack-gen1-9): parquet 3개(train/validation/test), 572MB
+    notes: "1~9세대. 라벨 0 이 'test' 라 매핑에서 제외해야 한다. 라벨은 영문 대문자 시작(Bulbasaur)"
+
+  - id: hf-empolyon2
+    kind: huggingface
+    ref: Empolyon2/PokemonDataset
+    enabled: false
+    skip: "1세대 전용 (데이터셋 카드 제목 'Pokemon Gen 1')"   # 2026-10-24 사용자 지시: 전국도감 1025종 대상, 1세대 전용 제외
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "Apache-2.0"
+    size: "606MB, 파일 6개"
+    verified: hf-api   # 2026-10-24 메타데이터 확인, 로그인 없이 다운로드 가능 (받지는 않음)
+    notes: "내용·라벨 형식 미확인"
+
+  - id: hf-pokemon-cards
+    kind: huggingface
+    ref: TheFusion21/PokemonCards
+    enabled: true   # 2026-10-24 사용자 허락 (로컬에 받은 뒤 드라이브로 이동)
+    phase: 1
+    use: eval
+    image_type: card
+    license: "CC BY-NC 4.0"
+    size: "9MB, 파일 3개"
+    verified: fetched   # 2026-10-24 받음 (드라이브 raw/hf-pokemon-cards): parquet, 8.9MB
+    notes: >
+      TCG 카드 이미지 + 캡션. 카드 전체를 그대로 분류하면 틀 디자인을 배운다.
+      카드 속 그림 영역만 잘라 평가(또는 일부 학습)에 쓴다. 캡션에서 포켓몬 이름을 파싱해 라벨로 쓴다
+
+  # ---------- Kaggle ----------
+  - id: kg-gen1-9-complete
+    kind: kaggle
+    ref: williamvabrinskas/complete-gen-1-9-pokemon-image-dataset
+    enabled: true   # 2026-10-24 사용자 허락 (로컬에 받은 뒤 드라이브로 이동)
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "MIT"
+    size: "1079MB"
+    verified: fetched   # 2026-10-24 받음 (드라이브 raw/kg-gen1-9-complete): tar.xz + 64x64 npz + 라벨/manifest csv (이미지가 묶음 안에 있다, 정규화 때 푼다), 1.0GB
+    notes: "64px 이고 이미 증강돼 있다고 표기 → 224 학습에 해상도가 부족할 수 있다. 품질 필터에서 최소 크기 기준 적용"
+
+  - id: kg-ultimate-1282
+    kind: kaggle
+    ref: shivanshcoding/1282-pokemon-139542-images-updated-pokedex-dataset
+    enabled: false
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "Apache 2.0"
+    size: "11934MB (약 12GB)"
+    verified: kaggle-api   # 2026-10-24 메타데이터 확인, 로그인 없이 다운로드 가능 (받지는 않음)
+    notes: "가장 큰 후보. 용량이 클 것 → 받기 전에 실제 용량 확인"
+
+  - id: kg-1000-pokemon
+    kind: kaggle
+    ref: noodulz/pokemon-dataset-1000
+    enabled: true   # 2026-10-24 사용자 허락 (로컬에 받은 뒤 드라이브로 이동)
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "CC0: Public Domain"
+    size: "816MB"
+    verified: fetched   # 2026-10-24 받음 (드라이브 raw/kg-1000-pokemon): 파일 53,080개, 882MB
+    notes: ""
+
+  - id: kg-lantian-gen1
+    kind: kaggle
+    ref: lantian773030/pokemonclassification
+    enabled: false
+    skip: "1세대 전용"   # 2026-10-24 사용자 지시: 전국도감 1025종 대상, 1세대 전용 제외
+    phase: 1
+    use: train
+    image_type: mixed
+    license: "Data files (c) Original Authors"
+    size: "454MB (제목: 7,000 Labeled Pokemon)"
+    verified: kaggle-api   # 2026-10-24 메타데이터 확인, 로그인 없이 다운로드 가능 (받지는 않음)
+    notes: "HF 1세대 데이터셋들과 중복 가능"
+
+  - id: kg-rounakbanik-meta
+    kind: kaggle
+    ref: rounakbanik/pokemon
+    enabled: false
+    skip: "7세대까지만 있는 메타 CSV, PokeAPI 로 대체"   # 2026-10-24 사용자 지시: 전국도감 1025종 대상, 1세대 전용 제외
+    phase: 1
+    use: meta
+    image_type: art
+    license: "CC0: Public Domain"
+    size: "1MB 미만 (CSV)"
+    verified: kaggle-api   # 2026-10-24 메타데이터 확인, 로그인 없이 다운로드 가능 (받지는 않음)
+    notes: "PokeAPI 로 대체 가능. 교차 검증용으로만"
+
+  # ---------- 웹 수집 (크롤링, 사용자 허락 필수) ----------
+  - id: serebii
+    kind: crawl
+    ref: https://www.serebii.net/pokemon/<slug>/
+    enabled: true   # 2026-10-24 사용자 허락 (1025종, 초당 3건)
+    phase: 1
+    use: train
+    image_type: mixed   # 공식 아트(폼 포함) = art, HOME·SV·SWSH·ZA 3D 렌더(이로치 포함) = render
+    license: "사이트 고지: All Content is (c) Serebii.net. 이미지 원 저작권은 포켓몬 권리자. 개인 학습용만, 재배포 금지"
+    size: "받음 2026-10-24: 1025종, 이미지 7,054장(art 1,445 / home·sv·sv_shiny 각 1,025 / swsh·swsh_shiny 각 905 / za·za_shiny 각 362), 557MB, 요청 약 8,000건(초당 3건)"
+    verified: fetched   # 2026-10-24 robots.txt(제한은 /hidden/ranch/, /crossword/ 만) 확인 후 전체 수집. 폼 아트 태그: mega 96, 리전 58, gmax 36, 기타 230
+    notes: >
+      수집기 scripts/collect/fetch-serebii.py. /pokemon/ 목록의 "번호 이름" 옵션으로 도감 번호 ↔ slug 를 맞춘다(1025종 전부 있음).
+      폼 태그는 공식 아트 alt 텍스트에서 읽는다 (파일명 접미사는 종마다 뜻이 달라 쓰지 않는다). 렌더는 기본형만.
+      한국어는 이름만, 도감 설명은 영어뿐이다 (한국어 도감 설명은 PokeAPI 기준. 없는 127종은 PokeAPI 영어 설명을 번역해 data/flavor-ko-translated.json 에 둔다).
+      9세대 이후 종은 SWSH 렌더가 없고, ZA 렌더는 Z-A 등장 종만 있다.
+
+  - id: serebii-sv
+    kind: crawl
+    ref: https://www.serebii.net/pokedex-sv/<slug>/
+    enabled: true   # 2026-10-25 사용자 허락 ("세레비넷 SV 크롤링 진행해", 앱 세션에서)
+    phase: 1
+    use: meta       # 이미지가 아니라 도감 설명(영어) 수집
+    image_type: none
+    license: "사이트 고지: All Content is (c) Serebii.net. 설명 원문 권리는 포켓몬 권리자. 개인 학습·앱 시험용만, 재배포 금지"
+    size: "받음 2026-10-25: 752종 페이지 + flavor_en.json (Scarlet 739, Violet 739, Legends: Z-A 544 = 2,022문장), 197MB"
+    verified: fetched
+    notes: >
+      수집기 scripts/collect/fetch-serebii-sv.py (앱 세션 작성). PokeAPI 에 없는 9세대 이전 종의 SV·레전드 Z-A 설명.
+      전설·환상 52종(HOME 전송 전용)은 페이지에 설명이 없다. 종 안에서 같은 문장을 묶은 1,987문장을 번역해
+      data/flavor-ko-translated.json 에 덧붙인다(translated: true).
+
+  # ---------- none 클래스용 (포켓몬이 아닌 이미지) ----------
+
+  - id: coco-val2017
+    kind: url
+    ref: http://images.cocodataset.org/zips/val2017.zip
+    enabled: true   # 2026-10-25 사용자 허락 (none 보강: 실제 앱에서 세면대·치약을 갈모매로 오탐)
+    phase: 1
+    use: none_pool
+    image_type: photo
+    license: "COCO 이미지: Flickr 사진, 사진마다 CC 라이선스가 다르다(주석은 CC BY 4.0). 개인 학습용, 재배포 금지"
+    size: "815,585,330 바이트(약 816MB), 5,000장"
+    verified: head   # 2026-10-25 HTTP HEAD 로 크기 확인 (https 는 응답 없음)
+    notes: "일상 사물·실내·거리 사진. none 클래스 학습·평가용으로만 쓴다. bg_pool/coco 로 줄여 복사해 쓴다"
+  # 티니핑 프로젝트의 bg_pool(배경 사진)을 그대로 복사해 쓸 수 있다 (받을 필요 없음).
+  # 다른 캐릭터(티니핑 원본 등)도 none 에 넣으면 "비슷한 그림체 캐릭터"를 거부하는 데 도움이 된다.

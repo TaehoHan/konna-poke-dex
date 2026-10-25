@@ -1,0 +1,327 @@
+class_id,form,form_class,category,include,by,note
+venusaur,mega,venusaur__mega,mega,1,auto,
+venusaur,gmax,venusaur__gmax,gmax,1,auto,
+charizard,mega_x,charizard__mega_x,mega,1,auto,
+charizard,mega_y,charizard__mega_y,mega,1,auto,
+charizard,gmax,charizard__gmax,gmax,1,auto,
+blastoise,mega,blastoise__mega,mega,1,auto,
+blastoise,gmax,blastoise__gmax,gmax,1,auto,
+butterfree,gmax,butterfree__gmax,gmax,1,auto,
+beedrill,mega,beedrill__mega,mega,1,auto,
+pidgeot,mega,pidgeot__mega,mega,1,auto,
+rattata,alola,rattata__alola,regional,1,auto,
+raticate,alola,raticate__alola,regional,1,auto,
+raticate,totem_alola,raticate__totem_alola,regional,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,rock_star,pikachu__rock_star,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pikachu,belle,pikachu__belle,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pikachu,pop_star,pikachu__pop_star,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pikachu,phd,pikachu__phd,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pikachu,libre,pikachu__libre,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pikachu,cosplay,pikachu__cosplay,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,original_cap,pikachu__original_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,hoenn_cap,pikachu__hoenn_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,sinnoh_cap,pikachu__sinnoh_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,unova_cap,pikachu__unova_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,kalos_cap,pikachu__kalos_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,alola_cap,pikachu__alola_cap,regional,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,partner_cap,pikachu__partner_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,starter,pikachu__starter,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,world_cap,pikachu__world_cap,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+pikachu,gmax,pikachu__gmax,gmax,1,auto,
+raichu,alola,raichu__alola,regional,1,auto,
+raichu,mega_x,raichu__mega_x,mega,1,auto,
+raichu,mega_y,raichu__mega_y,mega,1,auto,
+sandshrew,alola,sandshrew__alola,regional,1,auto,
+sandslash,alola,sandslash__alola,regional,1,auto,
+clefable,mega,clefable__mega,mega,1,auto,
+vulpix,alola,vulpix__alola,regional,1,auto,
+ninetales,alola,ninetales__alola,regional,1,auto,
+diglett,alola,diglett__alola,regional,1,auto,
+dugtrio,alola,dugtrio__alola,regional,1,auto,
+meowth,alola,meowth__alola,regional,1,auto,
+meowth,galar,meowth__galar,regional,1,auto,
+meowth,gmax,meowth__gmax,gmax,1,auto,
+persian,alola,persian__alola,regional,1,auto,
+growlithe,hisui,growlithe__hisui,regional,1,auto,
+arcanine,hisui,arcanine__hisui,regional,1,auto,
+alakazam,mega,alakazam__mega,mega,1,auto,
+machamp,gmax,machamp__gmax,gmax,1,auto,
+victreebel,mega,victreebel__mega,mega,1,auto,
+geodude,alola,geodude__alola,regional,1,auto,
+graveler,alola,graveler__alola,regional,1,auto,
+golem,alola,golem__alola,regional,1,auto,
+ponyta,galar,ponyta__galar,regional,1,auto,
+rapidash,galar,rapidash__galar,regional,1,auto,
+slowpoke,galar,slowpoke__galar,regional,1,auto,
+slowbro,mega,slowbro__mega,mega,1,auto,
+slowbro,galar,slowbro__galar,regional,1,auto,
+farfetchd,galar,farfetchd__galar,regional,1,auto,
+grimer,alola,grimer__alola,regional,1,auto,
+muk,alola,muk__alola,regional,1,auto,
+gengar,mega,gengar__mega,mega,1,auto,
+gengar,gmax,gengar__gmax,gmax,1,auto,
+kingler,gmax,kingler__gmax,gmax,1,auto,
+voltorb,hisui,voltorb__hisui,regional,1,auto,
+electrode,hisui,electrode__hisui,regional,1,auto,
+exeggutor,alola,exeggutor__alola,regional,1,auto,
+marowak,alola,marowak__alola,regional,1,auto,
+marowak,totem,marowak__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+weezing,galar,weezing__galar,regional,1,auto,
+kangaskhan,mega,kangaskhan__mega,mega,1,auto,
+starmie,mega,starmie__mega,mega,1,auto,
+mr_mime,galar,mr_mime__galar,regional,1,auto,
+pinsir,mega,pinsir__mega,mega,1,auto,
+tauros,paldea_combat_breed,tauros__paldea_combat_breed,regional,1,auto,
+tauros,paldea_blaze_breed,tauros__paldea_blaze_breed,regional,1,auto,
+tauros,paldea_aqua_breed,tauros__paldea_aqua_breed,regional,1,auto,
+gyarados,mega,gyarados__mega,mega,1,auto,
+lapras,gmax,lapras__gmax,gmax,1,auto,
+eevee,starter,eevee__starter,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+eevee,gmax,eevee__gmax,gmax,1,auto,
+aerodactyl,mega,aerodactyl__mega,mega,1,auto,
+snorlax,gmax,snorlax__gmax,gmax,1,auto,
+articuno,galar,articuno__galar,regional,1,auto,
+zapdos,galar,zapdos__galar,regional,1,auto,
+moltres,galar,moltres__galar,regional,1,auto,
+dragonite,mega,dragonite__mega,mega,1,auto,
+mewtwo,mega_x,mewtwo__mega_x,mega,1,auto,
+mewtwo,mega_y,mewtwo__mega_y,mega,1,auto,
+meganium,mega,meganium__mega,mega,1,auto,
+typhlosion,hisui,typhlosion__hisui,regional,1,auto,
+feraligatr,mega,feraligatr__mega,mega,1,auto,
+ampharos,mega,ampharos__mega,mega,1,auto,
+wooper,paldea,wooper__paldea,regional,1,auto,
+slowking,galar,slowking__galar,regional,1,auto,
+steelix,mega,steelix__mega,mega,1,auto,
+qwilfish,hisui,qwilfish__hisui,regional,1,auto,
+scizor,mega,scizor__mega,mega,1,auto,
+heracross,mega,heracross__mega,mega,1,auto,
+sneasel,hisui,sneasel__hisui,regional,1,auto,
+corsola,galar,corsola__galar,regional,1,auto,
+skarmory,mega,skarmory__mega,mega,1,auto,
+houndoom,mega,houndoom__mega,mega,1,auto,
+tyranitar,mega,tyranitar__mega,mega,1,auto,
+sceptile,mega,sceptile__mega,mega,1,auto,
+blaziken,mega,blaziken__mega,mega,1,auto,
+swampert,mega,swampert__mega,mega,1,auto,
+zigzagoon,galar,zigzagoon__galar,regional,1,auto,
+linoone,galar,linoone__galar,regional,1,auto,
+gardevoir,mega,gardevoir__mega,mega,1,auto,
+sableye,mega,sableye__mega,mega,1,auto,
+mawile,mega,mawile__mega,mega,1,auto,
+aggron,mega,aggron__mega,mega,1,auto,
+medicham,mega,medicham__mega,mega,1,auto,
+manectric,mega,manectric__mega,mega,1,auto,
+sharpedo,mega,sharpedo__mega,mega,1,auto,
+camerupt,mega,camerupt__mega,mega,1,auto,
+altaria,mega,altaria__mega,mega,1,auto,
+castform,sunny,castform__sunny,other,1,auto,생김새가 크게 다른 폼
+castform,rainy,castform__rainy,other,1,auto,생김새가 크게 다른 폼
+castform,snowy,castform__snowy,other,1,auto,생김새가 크게 다른 폼
+banette,mega,banette__mega,mega,1,auto,
+chimecho,mega,chimecho__mega,mega,1,auto,
+absol,mega,absol__mega,mega,1,auto,
+absol,mega_z,absol__mega_z,mega,1,auto,
+glalie,mega,glalie__mega,mega,1,auto,
+salamence,mega,salamence__mega,mega,1,auto,
+metagross,mega,metagross__mega,mega,1,auto,
+latias,mega,latias__mega,mega,1,auto,
+latios,mega,latios__mega,mega,1,auto,
+kyogre,primal,kyogre__primal,mega,1,auto,
+groudon,primal,groudon__primal,mega,1,auto,
+rayquaza,mega,rayquaza__mega,mega,1,auto,
+deoxys,attack,deoxys__attack,other,1,auto,생김새가 크게 다른 폼
+deoxys,defense,deoxys__defense,other,1,auto,생김새가 크게 다른 폼
+deoxys,speed,deoxys__speed,other,1,auto,생김새가 크게 다른 폼
+staraptor,mega,staraptor__mega,mega,1,auto,
+wormadam,sandy,wormadam__sandy,other,1,auto,생김새가 크게 다른 폼
+wormadam,trash,wormadam__trash,other,1,auto,생김새가 크게 다른 폼
+lopunny,mega,lopunny__mega,mega,1,auto,
+garchomp,mega,garchomp__mega,mega,1,auto,
+garchomp,mega_z,garchomp__mega_z,mega,1,auto,
+lucario,mega,lucario__mega,mega,1,auto,
+lucario,mega_z,lucario__mega_z,mega,1,auto,
+abomasnow,mega,abomasnow__mega,mega,1,auto,
+gallade,mega,gallade__mega,mega,1,auto,
+froslass,mega,froslass__mega,mega,1,auto,
+rotom,heat,rotom__heat,other,1,auto,생김새가 크게 다른 폼
+rotom,wash,rotom__wash,other,1,auto,생김새가 크게 다른 폼
+rotom,frost,rotom__frost,other,1,auto,생김새가 크게 다른 폼
+rotom,fan,rotom__fan,other,1,auto,생김새가 크게 다른 폼
+rotom,mow,rotom__mow,other,1,auto,생김새가 크게 다른 폼
+dialga,origin,dialga__origin,other,1,auto,생김새가 크게 다른 폼
+palkia,origin,palkia__origin,other,1,auto,생김새가 크게 다른 폼
+heatran,mega,heatran__mega,mega,1,auto,
+giratina,origin,giratina__origin,other,1,auto,생김새가 크게 다른 폼
+darkrai,mega,darkrai__mega,mega,1,auto,
+shaymin,sky,shaymin__sky,other,1,auto,생김새가 크게 다른 폼
+emboar,mega,emboar__mega,mega,1,auto,
+samurott,hisui,samurott__hisui,regional,1,auto,
+excadrill,mega,excadrill__mega,mega,1,auto,
+audino,mega,audino__mega,mega,1,auto,
+scolipede,mega,scolipede__mega,mega,1,auto,
+lilligant,hisui,lilligant__hisui,regional,1,auto,
+basculin,blue_striped,basculin__blue_striped,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+basculin,white_striped,basculin__white_striped,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+darumaka,galar,darumaka__galar,regional,1,auto,
+darmanitan,zen,darmanitan__zen,other,1,auto,생김새가 크게 다른 폼
+darmanitan,galar_standard,darmanitan__galar_standard,regional,1,auto,
+darmanitan,galar_zen,darmanitan__galar_zen,regional,1,auto,
+scrafty,mega,scrafty__mega,mega,1,auto,
+yamask,galar,yamask__galar,regional,1,auto,
+garbodor,gmax,garbodor__gmax,gmax,1,auto,
+zorua,hisui,zorua__hisui,regional,1,auto,
+zoroark,hisui,zoroark__hisui,regional,1,auto,
+eelektross,mega,eelektross__mega,mega,1,auto,
+chandelure,mega,chandelure__mega,mega,1,auto,
+stunfisk,galar,stunfisk__galar,regional,1,auto,
+golurk,mega,golurk__mega,mega,1,auto,
+braviary,hisui,braviary__hisui,regional,1,auto,
+tornadus,therian,tornadus__therian,other,1,auto,생김새가 크게 다른 폼
+thundurus,therian,thundurus__therian,other,1,auto,생김새가 크게 다른 폼
+landorus,therian,landorus__therian,other,1,auto,생김새가 크게 다른 폼
+kyurem,black,kyurem__black,other,1,auto,생김새가 크게 다른 폼
+kyurem,white,kyurem__white,other,1,auto,생김새가 크게 다른 폼
+keldeo,resolute,keldeo__resolute,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+meloetta,pirouette,meloetta__pirouette,other,1,auto,생김새가 크게 다른 폼
+chesnaught,mega,chesnaught__mega,mega,1,auto,
+delphox,mega,delphox__mega,mega,1,auto,
+greninja,battle_bond,greninja__battle_bond,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+greninja,ash,greninja__ash,other,1,auto,생김새가 크게 다른 폼
+greninja,mega,greninja__mega,mega,1,auto,
+pyroar,mega,pyroar__mega,mega,1,auto,
+floette,eternal,floette__eternal,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+floette,mega,floette__mega,mega,1,auto,
+meowstic,female,meowstic__female,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+meowstic,male_mega,meowstic__male_mega,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+meowstic,female_mega,meowstic__female_mega,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+aegislash,blade,aegislash__blade,other,1,auto,생김새가 크게 다른 폼
+malamar,mega,malamar__mega,mega,1,auto,
+barbaracle,mega,barbaracle__mega,mega,1,auto,
+dragalge,mega,dragalge__mega,mega,1,auto,
+hawlucha,mega,hawlucha__mega,mega,1,auto,
+sliggoo,hisui,sliggoo__hisui,regional,1,auto,
+goodra,hisui,goodra__hisui,regional,1,auto,
+pumpkaboo,small,pumpkaboo__small,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pumpkaboo,large,pumpkaboo__large,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+pumpkaboo,super,pumpkaboo__super,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+gourgeist,small,gourgeist__small,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+gourgeist,large,gourgeist__large,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+gourgeist,super,gourgeist__super,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+avalugg,hisui,avalugg__hisui,regional,1,auto,
+zygarde,10_power_construct,zygarde__10_power_construct,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+zygarde,50_power_construct,zygarde__50_power_construct,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+zygarde,complete,zygarde__complete,other,1,auto,생김새가 크게 다른 폼
+zygarde,10,zygarde__10,other,1,auto,생김새가 크게 다른 폼
+zygarde,mega,zygarde__mega,mega,1,auto,
+diancie,mega,diancie__mega,mega,1,auto,
+hoopa,unbound,hoopa__unbound,other,1,auto,생김새가 크게 다른 폼
+decidueye,hisui,decidueye__hisui,regional,1,auto,
+gumshoos,totem,gumshoos__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+vikavolt,totem,vikavolt__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+crabominable,mega,crabominable__mega,mega,1,auto,
+oricorio,pom_pom,oricorio__pom_pom,other,1,auto,생김새가 크게 다른 폼
+oricorio,pau,oricorio__pau,other,1,auto,생김새가 크게 다른 폼
+oricorio,sensu,oricorio__sensu,other,1,auto,생김새가 크게 다른 폼
+ribombee,totem,ribombee__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+rockruff,own_tempo,rockruff__own_tempo,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+lycanroc,midnight,lycanroc__midnight,other,1,auto,생김새가 크게 다른 폼
+lycanroc,dusk,lycanroc__dusk,other,1,auto,생김새가 크게 다른 폼
+wishiwashi,school,wishiwashi__school,other,1,auto,생김새가 크게 다른 폼
+araquanid,totem,araquanid__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+lurantis,totem,lurantis__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+salazzle,totem,salazzle__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+golisopod,mega,golisopod__mega,mega,1,auto,
+minior,orange_meteor,minior__orange_meteor,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,yellow_meteor,minior__yellow_meteor,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,green_meteor,minior__green_meteor,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,blue_meteor,minior__blue_meteor,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,indigo_meteor,minior__indigo_meteor,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,violet_meteor,minior__violet_meteor,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,red,minior__red,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,orange,minior__orange,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,yellow,minior__yellow,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,green,minior__green,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,blue,minior__blue,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,indigo,minior__indigo,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+minior,violet,minior__violet,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+togedemaru,totem,togedemaru__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+mimikyu,busted,mimikyu__busted,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+mimikyu,totem_disguised,mimikyu__totem_disguised,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+mimikyu,totem_busted,mimikyu__totem_busted,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+drampa,mega,drampa__mega,mega,1,auto,
+kommo_o,totem,kommo_o__totem,other,0,auto,토템·모자·코스프레·스타터는 종으로 합친다
+necrozma,dusk,necrozma__dusk,other,1,auto,생김새가 크게 다른 폼
+necrozma,dawn,necrozma__dawn,other,1,auto,생김새가 크게 다른 폼
+necrozma,ultra,necrozma__ultra,other,1,auto,생김새가 크게 다른 폼
+magearna,original,magearna__original,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+magearna,mega,magearna__mega,mega,1,auto,
+magearna,original_mega,magearna__original_mega,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+zeraora,mega,zeraora__mega,mega,1,auto,
+melmetal,gmax,melmetal__gmax,gmax,1,auto,
+rillaboom,gmax,rillaboom__gmax,gmax,1,auto,
+cinderace,gmax,cinderace__gmax,gmax,1,auto,
+inteleon,gmax,inteleon__gmax,gmax,1,auto,
+corviknight,gmax,corviknight__gmax,gmax,1,auto,
+orbeetle,gmax,orbeetle__gmax,gmax,1,auto,
+drednaw,gmax,drednaw__gmax,gmax,1,auto,
+coalossal,gmax,coalossal__gmax,gmax,1,auto,
+flapple,gmax,flapple__gmax,gmax,1,auto,
+appletun,gmax,appletun__gmax,gmax,1,auto,
+sandaconda,gmax,sandaconda__gmax,gmax,1,auto,
+cramorant,gulping,cramorant__gulping,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+cramorant,gorging,cramorant__gorging,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+toxtricity,low_key,toxtricity__low_key,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+toxtricity,amped_gmax,toxtricity__amped_gmax,gmax,1,auto,
+toxtricity,low_key_gmax,toxtricity__low_key_gmax,gmax,1,auto,
+centiskorch,gmax,centiskorch__gmax,gmax,1,auto,
+hatterene,gmax,hatterene__gmax,gmax,1,auto,
+grimmsnarl,gmax,grimmsnarl__gmax,gmax,1,auto,
+alcremie,gmax,alcremie__gmax,gmax,1,auto,
+falinks,mega,falinks__mega,mega,1,auto,
+eiscue,noice,eiscue__noice,other,1,auto,생김새가 크게 다른 폼
+indeedee,female,indeedee__female,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+morpeko,hangry,morpeko__hangry,other,1,auto,생김새가 크게 다른 폼
+copperajah,gmax,copperajah__gmax,gmax,1,auto,
+duraludon,gmax,duraludon__gmax,gmax,1,auto,
+zacian,crowned,zacian__crowned,other,1,auto,생김새가 크게 다른 폼
+zamazenta,crowned,zamazenta__crowned,other,1,auto,생김새가 크게 다른 폼
+eternatus,eternamax,eternatus__eternamax,other,1,auto,생김새가 크게 다른 폼
+urshifu,rapid_strike,urshifu__rapid_strike,other,1,auto,생김새가 크게 다른 폼
+urshifu,single_strike_gmax,urshifu__single_strike_gmax,gmax,1,auto,
+urshifu,rapid_strike_gmax,urshifu__rapid_strike_gmax,gmax,1,auto,
+zarude,dada,zarude__dada,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+calyrex,ice,calyrex__ice,other,1,auto,생김새가 크게 다른 폼
+calyrex,shadow,calyrex__shadow,other,1,auto,생김새가 크게 다른 폼
+ursaluna,bloodmoon,ursaluna__bloodmoon,other,1,auto,생김새가 크게 다른 폼
+basculegion,female,basculegion__female,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+enamorus,therian,enamorus__therian,other,1,auto,생김새가 크게 다른 폼
+oinkologne,female,oinkologne__female,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+maushold,family_of_three,maushold__family_of_three,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+squawkabilly,blue_plumage,squawkabilly__blue_plumage,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+squawkabilly,yellow_plumage,squawkabilly__yellow_plumage,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+squawkabilly,white_plumage,squawkabilly__white_plumage,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+scovillain,mega,scovillain__mega,mega,1,auto,
+palafin,hero,palafin__hero,other,1,auto,생김새가 크게 다른 폼
+glimmora,mega,glimmora__mega,mega,1,auto,
+tatsugiri,droopy,tatsugiri__droopy,other,1,auto,생김새가 크게 다른 폼
+tatsugiri,stretchy,tatsugiri__stretchy,other,1,auto,생김새가 크게 다른 폼
+tatsugiri,curly_mega,tatsugiri__curly_mega,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+tatsugiri,droopy_mega,tatsugiri__droopy_mega,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+tatsugiri,stretchy_mega,tatsugiri__stretchy_mega,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+dudunsparce,three_segment,dudunsparce__three_segment,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+baxcalibur,mega,baxcalibur__mega,mega,1,auto,
+gimmighoul,roaming,gimmighoul__roaming,other,1,auto,생김새가 크게 다른 폼
+koraidon,limited_build,koraidon__limited_build,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+koraidon,sprinting_build,koraidon__sprinting_build,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+koraidon,swimming_build,koraidon__swimming_build,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+koraidon,gliding_build,koraidon__gliding_build,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+miraidon,low_power_mode,miraidon__low_power_mode,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+miraidon,drive_mode,miraidon__drive_mode,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+miraidon,aquatic_mode,miraidon__aquatic_mode,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+miraidon,glide_mode,miraidon__glide_mode,other,0,auto,크기·성별·색·모드처럼 차이가 작아 종으로 합친다
+ogerpon,wellspring_mask,ogerpon__wellspring_mask,other,1,auto,생김새가 크게 다른 폼
+ogerpon,hearthflame_mask,ogerpon__hearthflame_mask,other,1,auto,생김새가 크게 다른 폼
+ogerpon,cornerstone_mask,ogerpon__cornerstone_mask,other,1,auto,생김새가 크게 다른 폼
+terapagos,terastal,terapagos__terastal,other,1,auto,생김새가 크게 다른 폼
+terapagos,stellar,terapagos__stellar,other,1,auto,생김새가 크게 다른 폼

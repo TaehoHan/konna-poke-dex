@@ -1,0 +1,26 @@
+# teeniping-dex requirements 에서 포크. 크롤링·셀레니움 계열은 뺐다 (데이터셋 API 로 받는다)
+
+# 1. 수집 (Kaggle / Hugging Face / PokeAPI)
+kaggle>=1.6.17
+huggingface_hub>=0.26.0
+datasets>=3.0.0          # parquet 형식 HF 데이터셋을 풀 때
+requests>=2.32.3
+pyyaml>=6.0.2            # data/sources.yaml
+imagehash>=4.3.1         # pHash 중복 제거
+
+# 2. 이미지 처리 (합성 데이터 생성 및 전처리용)
+opencv-python>=4.10.0
+pillow>=11.0.0
+numpy>=2.0.0
+
+# 3. AI 모델 학습 (YOLOv8)
+ultralytics>=8.3.0
+
+# 4. 유틸리티
+tqdm>=4.67.1
+pandas>=2.2.0
+
+# 5. ONNX 내보내기/검증
+onnx>=1.17.0
+onnxslim>=0.1.50
+onnxruntime>=1.20.0
