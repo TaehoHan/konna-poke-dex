@@ -98,9 +98,11 @@ class SettingsScreen extends StatelessWidget {
             title: const Text('모델'),
             subtitle: Text([
               model.hasSpeciesModel
-                  ? '① 종 모델 ${model.speciesClasses}클래스, 입력 ${model.inputSize}px'
+                  ? '① 종 모델 ${model.modelSummary('species') ?? '${model.speciesClasses}클래스, 입력 ${model.inputSize}px'}'
                   : '① 종 모델 없음 (인식 안 됨)',
-              model.hasFormModel ? '② 폼 모델 ${model.formClasses}클래스' : '② 폼 모델 없음 (종만 판정)',
+              model.hasFormModel
+                  ? '② 폼 모델 ${model.modelSummary('forms') ?? '${model.formClasses}클래스'}'
+                  : '② 폼 모델 없음 (종만 판정)',
               if (model.modelError != null) '오류: ${model.modelError}',
             ].join('\n')),
           ),

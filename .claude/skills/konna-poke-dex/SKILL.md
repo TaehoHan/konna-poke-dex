@@ -7,7 +7,7 @@ description: 이 저장소(포켓몬 도감: 카메라로 포켓몬을 인식하
 
 포켓몬 한 마리를 카메라로 비추면 종을 알아보고(인식) 도감 항목을 보여주는(해석) 도감이다. `teeniping-dex` 에서 포크했고, 거기서 얻은 범용 교훈은 이 스킬의 [pitfalls.md](pitfalls.md), [checklists.md](checklists.md) 에 포켓몬 상황에 맞춰 옮겨 두었다.
 
-**현재 상태 (2026-10-25): 첫 모델 학습·평가까지.** `.venv` 있음. PokeAPI 1025종 받음(`list-poke.csv`, `pokedex-ko.json`; 9세대 등 127종은 한국어 도감 설명 없음). 세레비넷 1025종 받음(드라이브 `raw/serebii`, 7,054장, 폼 태그 포함). HF·Kaggle 4개 받음(드라이브 `raw/`), 라벨 매핑 완료(`data/label-map/`), 정규화 완료(pool 152,533장), 데이터셋(train 309,000) 생성, ① 종 모델 `train_v1` 학습·평가 완료(2026-10-25, 같은 분포 test top1 0.956, 폼 이미지 0.62, DESIGN.md 6절). 실제 촬영 평가·② 폼 모델은 아직. 모델은 2단계(① 종 + none → ② 폼, DESIGN.md 2.1).  아래 "(예정)" 은 아직 없는 스크립트다. 없는 것을 있다고, 돌려 보지 않은 것을 동작한다고 말하지 않는다.
+**현재 상태 (2026-10-25): 첫 모델 학습·평가까지.** `.venv` 있음. PokeAPI 1025종 받음(`list-poke.csv`, `pokedex-ko.json`; 9세대 등 127종은 한국어 도감 설명 없음). 세레비넷 1025종 받음(드라이브 `raw/serebii`, 7,054장, 폼 태그 포함). HF·Kaggle 4개 받음(드라이브 `raw/`), 라벨 매핑 완료(`data/label-map/`), 정규화 완료(pool 152,533장), 데이터셋(train 309,000) 생성, ① 종 모델 `train_v1`·`train_v2`(COCO none 보강, none 거부 75→92%), ② 폼 모델 `form_v1` 학습·평가 완료(2026-10-25, DESIGN.md 6절). 실제 촬영 평가는 앱 수집 프레임이 더 필요. 모델은 2단계(① 종 + none → ② 폼, DESIGN.md 2.1).  아래 "(예정)" 은 아직 없는 스크립트다. 없는 것을 있다고, 돌려 보지 않은 것을 동작한다고 말하지 않는다.
 
 설계 근거: `DESIGN.md`, 수집 설계: `docs/COLLECTING.md`, 출처 목록: `data/sources.yaml`, 규칙: `CLAUDE.md`.
 

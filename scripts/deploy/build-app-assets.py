@@ -8,6 +8,7 @@
   species_labels.txt       ① 종 모델 출력 순서의 class_id (1025종 + none). 모델이 있으면 ONNX 메타데이터 names 에서 읽는다.
                            모델이 없으면 정렬된 class_id + none 자리표시 (Ultralytics 분류 폴더 순서 = 이름순)
   models/species.onnx      ① 종 모델 (paths.BEST_ONNX). 없으면 앱은 인식 없이 도감만 보여 준다
+  model_info.json          어느 모델인지 (run 폴더 이름·크기·수정 시간·해시·클래스 수). 앱 설정·진단 화면에 표시한다
   models/forms.onnx        ② 폼 모델 (paths.FORM_ONNX). 없으면 앱은 ② 없이 동작한다
   form_labels.txt          ② 폼 모델 출력 순서 (`<종>__<폼>` 과 기본형 종 이름). 폼 모델이 있을 때만
   thumbs/<id>.png          (선택 --thumbs) 160px 썸네일. 다른 모습은 thumbs/<종>__<폼>.png, 이로치는 thumbs/<종>__shiny.png
@@ -381,12 +382,26 @@ def main():
         (out / d).mkdir(parents=True, exist_ok=True)
         (out / d / ".gitkeep").touch()
     # 이전 실행의 모델·라벨은 지운다 (모델이 사라졌는데 옛 모델이 남아 라벨과 어긋나는 것을 막는다)
-    for p in [*(out / "models").glob("*.onnx"), out / "species_labels.txt", out / "form_labels.txt", out / "dex.json"]:
+    for p in [*(out / "models").glob("*.onnx"), out / "species_labels.txt", out / "form_labels.txt", out / "dex.json", out / "model_info.json"]:
         p.unlink(missing_ok=True)
 
     rows = load_classes()
     ids = [r["class_id"] for r in rows]
     expected = sorted(ids + [NONE])
+
+    model_info = {}   # 앱 설정·진단 화면에 보여 줄 모델 정보 (어느 모델인지 구분하려고: 파일 크기가 같아도 해시가 다르다)
+
+    def describe(path, labels, meta):
+        import hashlib
+        import time
+        return {
+            "run": path.parent.parent.name,                       # 예: train_v2
+            "bytes": path.stat().st_size,
+            "mtime": time.strftime("%Y-%m-%d %H:%M", time.localtime(path.stat().st_mtime)),
+            "sha": hashlib.sha1(path.read_bytes()).hexdigest()[:8],
+            "classes": len(labels),
+            "imgsz": meta.get("imgsz", ""),
+        }
 
     # ① 종 모델 + 라벨
     if paths.BEST_ONNX.exists():
@@ -397,6 +412,7 @@ def main():
             extra, lack = set(labels) - set(expected), set(expected) - set(labels)
             warn(f"종 모델 라벨이 list-poke.csv 와 다르다: 모델에만 {sorted(extra)[:5]} / CSV 에만 {sorted(lack)[:5]}")
         shutil.copy(paths.BEST_ONNX, out / "models" / "species.onnx")
+        model_info["species"] = describe(paths.BEST_ONNX, labels, meta)
         print(f"종 모델: {paths.BEST_ONNX} (imgsz={meta.get('imgsz', '?')}, 클래스 {len(labels)})")
     else:
         labels = expected
@@ -411,10 +427,13 @@ def main():
         if bad:
             warn(f"폼 라벨의 종이 클래스 목록에 없다: {bad[:5]}")
         shutil.copy(paths.FORM_ONNX, out / "models" / "forms.onnx")
+        model_info["forms"] = describe(paths.FORM_ONNX, form_labels, fmeta)
         (out / "form_labels.txt").write_text("\n".join(form_labels) + "\n", encoding="utf-8")
         print(f"폼 모델: {paths.FORM_ONNX} (imgsz={fmeta.get('imgsz', '?')}, 폼 클래스 {len(form_labels)})")
     else:
         warn(f"폼 모델이 없다: {paths.FORM_ONNX} → 앱은 ② 없이 종만 판정한다")
+
+    (out / "model_info.json").write_text(json.dumps(model_info, ensure_ascii=False, indent=1), encoding="utf-8")
 
     # 다른 모습(폼·이로치) 목록. 세레비넷 manifest 에서 만들고, 앱은 썸네일이 있는 것만 보여 준다
     srows = serebii_rows()

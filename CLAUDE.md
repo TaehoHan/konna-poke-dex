@@ -3,7 +3,7 @@
 포켓몬 도감 프로젝트(konna-poke-dex). 카메라로 포켓몬을 인식하고 도감 항목을 해석해 보여준다.
 `teeniping-dex`(`~/workspaces/experiment/teeniping-dex`)에서 포크했다. 개요는 @README.md, 설계와 결정 이유는 @DESIGN.md, 수집 설계는 @docs/COLLECTING.md, 출처 목록은 `data/sources.yaml`. 단계별 절차·함정·점검표는 `konna-poke-dex` 스킬(`.claude/skills/konna-poke-dex/`).
 
-**현재 상태 (2026-10-25): 첫 모델 학습·평가까지.** `.venv` 는 만들었다(2026-10-24, torch MPS 확인). PokeAPI 1025종 수집 완료(`list-poke.csv`, `pokedex-ko.json`). 세레비넷 1025종 받음(드라이브 `raw/serebii`, 7,054장). HF·Kaggle 4개(jjmack, pokemon-cards, gen1-9-complete, 1000-pokemon) 받음(드라이브 `raw/`). 학습 데이터셋(`workspace/dataset_cls`)과 ① 종 모델 `train_v1`(같은 분포 test top1 0.956, DESIGN.md 6절) 있음. 실제 촬영 평가 전. `scripts/dataset/make-dataset.py`·`train/train-cls.py`·`eval/eval-test.py`·`eval/verify-onnx.py` 는 포켓몬용으로 고쳐 돌렸다. `eval/eval-real.py`·`eval/verify-stress.py`·`deploy/to-kmodel.py` 는 티니핑판 그대로이고 돌려 보지 않았다.
+**현재 상태 (2026-10-25): 첫 모델 학습·평가까지.** `.venv` 는 만들었다(2026-10-24, torch MPS 확인). PokeAPI 1025종 수집 완료(`list-poke.csv`, `pokedex-ko.json`). 세레비넷 1025종 받음(드라이브 `raw/serebii`, 7,054장). HF·Kaggle 4개(jjmack, pokemon-cards, gen1-9-complete, 1000-pokemon) 받음(드라이브 `raw/`). 학습 데이터셋(`workspace/dataset_cls`, COCO 로 none 보강)과 ① 종 모델 `train_v1`·`train_v2`(같은 분포 test top1 0.957, none 거부 91.7%), ② 폼 모델 `form_v1`(DESIGN.md 6절) 있음. 실제 촬영 평가는 앱 수집 프레임(`eval_real`)이 아직 1장뿐. `scripts/dataset/make-dataset.py`·`train/train-cls.py`·`eval/eval-test.py`·`eval/verify-onnx.py` 는 포켓몬용으로 고쳐 돌렸다. `eval/eval-real.py`·`eval/verify-stress.py`·`deploy/to-kmodel.py` 는 티니핑판 그대로이고 돌려 보지 않았다.
 
 ## 구조
 - `scripts/{collect,dataset,train,eval,deploy}/` 실행 스크립트. **경로는 `scripts/paths.py` 한곳에서 관리**한다. 새 경로는 거기에 추가하고 스크립트에 경로 문자열을 직접 쓰지 않는다. (`scripts/deploy/to-kmodel.py` 만 다른 PC 로 복사해 쓰는 독립 스크립트라 paths 를 쓰지 않는다.)

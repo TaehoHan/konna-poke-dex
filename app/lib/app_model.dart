@@ -143,6 +143,9 @@ class AppModel extends ChangeNotifier {
         notifyListeners();
       });
       dex = await Dex.load();
+      try {
+        modelInfo = jsonDecode(await rootBundle.loadString('assets/model_info.json')) as Map<String, dynamic>;
+      } catch (_) {}
       captureCount = await CaptureStore.count();
     } catch (e) {
       loadError = '$e';
@@ -186,6 +189,23 @@ class AppModel extends ChangeNotifier {
   }
 
   bool front = false; // 전면 카메라를 쓰는 중 (앱을 켤 때는 항상 후면)
+  /// 어느 모델이 들어 있는지 (assets/model_info.json: build-app-assets.py 가 만든다). 없으면 빈 맵.
+  Map<String, dynamic> modelInfo = {};
+
+  /// 한 줄 요약: "train_v2 · 10.5MB · 1026클래스 · 2026-10-25 17:21 · #a8f13ac0". [key] 는 species / forms. 정보가 없으면 null.
+  String? modelSummary(String key) {
+    final m = modelInfo[key];
+    if (m is! Map) return null;
+    final mb = ((m['bytes'] as num?) ?? 0) / 1e6;
+    return '${m['run']} · ${mb.toStringAsFixed(1)}MB · ${m['classes']}클래스 · ${m['mtime']} · #${m['sha']}';
+  }
+
+  /// 진단 칸용 아주 짧은 이름: "train_v2 #a8f13ac0".
+  String? get speciesModelShort {
+    final m = modelInfo['species'];
+    return m is Map ? '${m['run']} #${m['sha']}' : null;
+  }
+
   bool hasFront = true; // 전면 카메라가 있다 (없으면 전환 버튼을 숨긴다)
   bool torch = false; // 손전등(어두운 곳에서 비춤). 전면은 없다
 

@@ -84,7 +84,7 @@ DATASET_FORM = WORK / "dataset_form"         # ② 폼 모델 학습 데이터 (
 # 모델
 MODELS = WORK / "models"
 PRETRAINED = MODELS / "pretrained" / "yolov8n-cls.pt"
-RUN_NAME = "train_v1"                        # 현재 모델의 폴더 이름 (아직 없음)
+RUN_NAME = "train_v2"                        # 현재 모델의 폴더 이름 (① 종 모델, train_v1 은 COCO 없이 학습한 이전 버전)
 RUN = MODELS / RUN_NAME
 BEST_ONNX = RUN / "weights" / "best.onnx"
 BEST_PT = RUN / "weights" / "best.pt"

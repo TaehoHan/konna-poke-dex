@@ -282,6 +282,7 @@ class _Debug extends StatelessWidget {
         style: const TextStyle(color: Colors.white, fontSize: 11),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (model.inputPreview != null) SizedBox(width: 96, height: 96, child: RawImage(image: model.inputPreview, fit: BoxFit.cover)),
+          if (model.speciesModelShort != null) Text('모델 ${model.speciesModelShort}'),
           Text(model.frameInfo),
           Text('${model.fps.toStringAsFixed(0)}fps ${model.msPerFrame.toStringAsFixed(0)}ms (영역 ${model.tileCount}곳)'),
           if (model.recognized.length > 1) Text('인식 ${model.recognized.map((p) => p.id).join(', ')}'),
