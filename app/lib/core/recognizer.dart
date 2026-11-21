@@ -18,18 +18,25 @@ class Recognition {
 }
 
 /// 프레임(한 장을 여러 영역으로 나눠 분류한 결과)에서 "인식"된 종을 가려낸다. 인식 조건 (2026-10-25):
-///  (a) 어떤 영역의 top-1 원시 확률 >= [threshold]  (b) top-1 이 none 이 아님  (c) 같은 종이 연속 [required] 프레임.
+///  (a) 어떤 영역의 top-1 원시 확률 >= [threshold]  (b) top-1 이 none 이 아님  (c) 같은 종이 연속 [required] 프레임
+///  (d) 그 연속이 [minDuration] 이상 이어짐 (2026-11-21: 폰이 빠르면 5프레임이 0.2초 남짓이라 카드가 너무 빨리 떴다).
 /// 종마다 따로 세므로 여러 마리가 동시에 인식된다. 확신도는 그 연속 프레임들의 원시 확률(그 프레임 영역 중 최고) 평균.
 class Recognizer {
   double threshold = 0.7; // AppModel.threshold 가 덮어쓴다 (임시값, 실제 촬영으로 다시 정한다)
   int required = 5; // 같은 종이 이만큼 연속으로 나와야 인식
+  Duration minDuration = const Duration(milliseconds: 800); // 연속이 이만큼 이어져야 인식 (기기 속도와 무관하게)
 
   final Map<String, List<double>> _runs = {}; // 종 -> 최근 연속 프레임의 확률
+  final Map<String, DateTime> _since = {}; // 종 -> 연속이 시작된 시각
 
-  void reset() => _runs.clear();
+  void reset() {
+    _runs.clear();
+    _since.clear();
+  }
 
-  /// [tiles]: 이번 프레임에서 영역마다의 상위 후보 (각 목록의 첫째가 top-1).
-  Recognition update(List<List<Prediction>> tiles) {
+  /// [tiles]: 이번 프레임에서 영역마다의 상위 후보 (각 목록의 첫째가 top-1). [now] 는 테스트용.
+  Recognition update(List<List<Prediction>> tiles, {DateTime? now}) {
+    final t0 = now ?? DateTime.now();
     final best = <String, double>{};
     var any = false;
     for (final t in tiles) {
@@ -39,7 +46,9 @@ class Recognizer {
       if (!p.isNone && p.confidence >= threshold && p.confidence > (best[p.id] ?? 0)) best[p.id] = p.confidence;
     }
     _runs.removeWhere((id, _) => !best.containsKey(id)); // 한 프레임이라도 빠지면 처음부터
+    _since.removeWhere((id, _) => !best.containsKey(id));
     for (final e in best.entries) {
+      _since.putIfAbsent(e.key, () => t0);
       final r = _runs.putIfAbsent(e.key, () => []);
       r.add(e.value);
       while (r.length > required) {
@@ -48,7 +57,8 @@ class Recognizer {
     }
     final done = [
       for (final e in _runs.entries)
-        if (e.value.length >= required) Prediction(e.key, e.value.fold(0.0, (a, b) => a + b) / e.value.length),
+        if (e.value.length >= required && t0.difference(_since[e.key]!) >= minDuration)
+          Prediction(e.key, e.value.fold(0.0, (a, b) => a + b) / e.value.length),
     ]..sort((a, b) => b.confidence.compareTo(a.confidence));
     if (done.isNotEmpty) return Recognition(RecState.recognized, done.first, done);
     if (best.isNotEmpty) {

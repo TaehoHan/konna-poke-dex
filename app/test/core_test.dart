@@ -325,7 +325,9 @@ void main() {
   });
 
   test('Recognizer: 임계값 이상·none 아님·같은 종 연속 5프레임일 때만 인식, 확신도는 원시 평균', () {
-    final r = Recognizer()..threshold = 0.7;
+    final r = Recognizer()
+      ..threshold = 0.7
+      ..minDuration = Duration.zero;
     List<List<Prediction>> one(Prediction p) => [[p]];
     for (var i = 0; i < 4; i++) {
       expect(r.update(one(const Prediction('a', 0.8))).state, RecState.candidate);
@@ -341,8 +343,27 @@ void main() {
     expect(r.update(one(const Prediction('none', 0.99))).state, RecState.unknown);
   });
 
+  test('Recognizer: 프레임이 빨라도 같은 종이 minDuration 이상 이어져야 인식', () {
+    final r = Recognizer()..threshold = 0.7; // 기본 0.8초
+    final t0 = DateTime(2026);
+    List<List<Prediction>> one() => [[const Prediction('a', 0.9)]];
+    for (var i = 0; i < 10; i++) {
+      // 50ms 간격 10프레임 = 0.45초: 프레임 수는 넘지만 시간이 모자란다
+      expect(r.update(one(), now: t0.add(Duration(milliseconds: 50 * i))).state, RecState.candidate);
+    }
+    expect(r.update(one(), now: t0.add(const Duration(milliseconds: 800))).state, RecState.recognized);
+    // 한 프레임 빠지면 시간도 처음부터
+    r.update([[const Prediction('none', 0.99)]], now: t0.add(const Duration(milliseconds: 850)));
+    for (var i = 0; i < 6; i++) {
+      expect(r.update(one(), now: t0.add(Duration(milliseconds: 900 + 100 * i))).state, RecState.candidate);
+    }
+    expect(r.update(one(), now: t0.add(const Duration(milliseconds: 1700))).state, RecState.recognized);
+  });
+
   test('Recognizer: 영역이 여러 개면 종마다 따로 세어 여러 마리를 동시에 인식', () {
-    final r = Recognizer()..threshold = 0.7;
+    final r = Recognizer()
+      ..threshold = 0.7
+      ..minDuration = Duration.zero;
     Recognition last = const Recognition(RecState.searching);
     for (var i = 0; i < 5; i++) {
       last = r.update([
